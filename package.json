@@ -1,0 +1,15 @@
+{
+  "name": "ts_typechanges",
+  "version": "1.0.0",
+  "description": "'ts 类型体操'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "priority",
+  "license": "ISC",
+  "devDependencies": {
+    "@type-challenges/utils": "^0.1.1",
+    "typescript": "^4.6.3"
+  }
+}
