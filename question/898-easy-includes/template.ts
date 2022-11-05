@@ -1,7 +1,19 @@
-import type { Equal } from '@type-challenges/utils'
+// import type { Equal } from '@type-challenges/utils'
+type IsEqual<T, U> =
+  (<G>() => G extends T ? 1 : 2) extends
+  (<G>() => G extends U ? 1 : 2)
+    ? true
+    : false
 
-type Includes<T extends readonly any[], U> =
-  T extends [infer R, ...infer L] ? true extends Equal<R, U> ? true : Includes<L, U> : false
+type a = IsEqual<undefined, null>
+
+type Includes<Value extends any[], Item> =
+  IsEqual<Value[0], Item> extends true
+    ? true
+    : Item extends undefined ? false
+      : Value extends [Value[0], ...infer rest]
+        ? Includes<rest, Item>
+        : false
 
 // type mytype<T> = T extends (infer U)[] ? U : never;
 
@@ -21,3 +33,4 @@ type Includes<T extends readonly any[], U> =
 //   : U;
 
 // type T1 = Reverse<[0,1],[3,4]> // [string,number]
+
